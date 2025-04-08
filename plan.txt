@@ -1,0 +1,209 @@
+Project Development Plan
+
+Phase 1: Project Setup and UI Implementation
+Step 1. Initial Setup
+   [✓] Create React application with Vite
+   [✓] Install core dependencies
+       [✓] React and React DOM
+       [✓] Tailwind CSS
+       [✓] PostCSS and Autoprefixer
+       [✓] Noto Sans Devanagari font
+       [✓] Web Audio API libraries (tone.js)
+       [✓] Sanskrit TTS library (@google-cloud/text-to-speech)
+       [✓] File upload handling (react-dropzone)
+       [✓] FFT library (using Web Audio API built-in)
+
+step 2. HTML & Document Structure
+   [✓] Set up meta tags for proper Unicode and viewport settings
+   [✓] Configure language support for Sanskrit/Devanagari
+   [✓] Add font preloading for Noto Sans Devanagari
+   [✓] Create base layout structure
+
+3. Component Architecture
+   [✓] Set up project structure
+       [✓] /src
+         [✓] /components
+           [✓] /visualizations
+           [✓] /controls
+           [✓] /audio
+           [✓] /shared
+         [✓] /hooks
+         [✓] /utils
+         [✓] /styles
+
+4. Core UI Components
+   [✓] Create main container with responsive grid layout (dark theme)
+       - Main background: bg-gray-900
+       - Panel backgrounds: bg-gray-800
+       - Container layout implementation:
+           [✓] Create MainLayout.tsx component
+           [✓] Add responsive grid system (2x2 for desktop)
+           [✓] Implement dark theme context
+
+   [✓] Implement visualization panels components
+       [✓] WaveformDisplay.tsx
+           - Canvas setup with WebGL context
+           - Real-time waveform animation
+           - Gradient overlay (purple)
+       [✓] FrequencySpectrum.tsx
+           - FFT data visualization
+           - Bar chart implementation
+           - Blue to purple color mapping
+       [✓] HarmonicStructure.tsx
+           - Circular visualization
+           - Golden ratio pattern
+           - Overtone mapping
+       [✓] RhythmPattern.tsx
+           - Grid-based dot matrix
+           - Beat detection visualization
+           - Accent highlight system
+
+   [ ] Build control components
+       [✓] AudioControls.tsx
+           - Play/pause/stop buttons
+           - Progress bar
+           - Time display (current/total)
+           - Volume slider
+       [✓] VisualizationControls.tsx
+           - Amplitude adjustment
+           - Frequency response
+           - Smoothing controls
+           - Display options toggles
+       [✓] FileUpload.tsx
+           - Dropzone implementation
+           - File type validation
+           - Upload progress indicator
+       [✓] SanskritInput.tsx
+           - Devanagari text input
+           - Font rendering
+           - Input validation
+
+5. Styling and Theme Setup
+   [✓] Configure Tailwind dark theme with custom colors
+       Base theme:
+       - Background: #111827 (gray-900)
+       - Panels: #1F2937 (gray-800)
+       - Text: #F3F4F6 (gray-100)
+   [✓] Set up design system
+       Primary colors:
+       - Indigo: #4F46E5 to #7C3AED
+       - Purple: #7C3AED to #9333EA
+       - Blue: #3B82F6
+       Accent colors:
+       - Gold: #F59E0B
+       - Cyan: #06B6D4
+
+6. Animation and Interaction
+   [✓] Set up base animation system
+       - Define keyframes for visualizations
+       - Configure RAF handlers
+       - Set up WebGL context
+   [✓] Implement responsive breakpoints
+       - Mobile: < 640px
+       - Tablet: 640px - 1024px
+       - Desktop: > 1024px
+
+7. Performance Foundation
+   [✓] Configure build optimization
+   [✓] Set up lazy loading
+   [✓] Implement error boundaries
+   [✓] Add loading states
+   [✓] Configure canvas optimization
+
+Phase 2: Audio Processing Backend
+[✓] Implement Sanskrit TTS integration
+[✓] Choose between Google TTS API or a specialized Sanskrit TTS (e.g., eSpeak with Sanskrit support).
+[✓] Create a service to convert Sanskrit text input to audio (e.g., MP3/WAV).
+[✓] Test with Devanagari script from the mockup
+[✓] Create audio file processing service
+[✓] Build a Node.js/Express backend (if not already set up) to handle audio processing.
+[✓] Implement endpoints for TTS generation and audio upload processing.
+[✓] Set up audio conversion utilities
+[✓] Add functionality to convert audio formats (e.g., WAV to MP3) using ffmpeg.js or similar.
+[✓] Ensure compatibility with Web Audio API.
+
+Phase 3: Core Features Development
+Input Mechanisms
+[✓] Sanskrit text input with Devanagari support
+[✓] Audio file uploader
+[✓] Implement drag-and-drop uploader using react-dropzone.
+[✓] Add file type validation (e.g., MP3, WAV).
+[✓] Connect uploader to backend processing service.
+[✓] Input validation and processing
+[✓] Validate Sanskrit text for correct Unicode characters.
+[✓] Process uploaded audio files for compatibility with analysis engine.
+
+Audio Analysis Engine
+[✓] Integrate Web Audio API for real-time analysis
+[✓] Set up AudioContext and AnalyserNode.
+[✓] Connect audio source (TTS output or uploaded file) to analyser.
+[✓] Implement FFT (Fast Fourier Transform) for frequency analysis
+[✓] Use Web Audio API's AnalyserNode with getByteFrequencyData.
+[✓] Test frequency data extraction with sample Sanskrit audio.
+[✓] Create overtone detection algorithms
+[✓] Develop logic to identify harmonic overtones in Sanskrit recitation.
+[✓] Map overtones to visualization (e.g., circular harmonic structure in mockup).
+[✓] Build rhythm pattern recognition
+[✓] Analyze amplitude peaks to detect rhythm (e.g., 4/4 pattern in mockup).
+[✓] Output rhythm data for visualization (e.g., dots in rhythm pattern section).
+
+Visualization Components
+[✓] Develop interactive waveform display
+[✓] Replace mock animation with real audio data using Web Audio API.
+[✓] Create spectrogram visualization
+[✓] Build a canvas-based spectrogram using frequency data over time.
+[✓] Add color gradient mapping (e.g., blue to purple as in mockup).
+[✓] Build frequency spectrum analyzer
+[✓] Implement bar-style frequency display
+[✓] Make it interactive with real-time audio input
+[✓] Implement energy distribution heatmap
+[✓] Create a circular or grid-based heatmap for energy
+[✓] Tie to overtone detection output
+
+Phase 4: Integration & Enhancement
+UI/UX Refinement
+[✓] Design responsive interface
+[✓] Create interactive controls for visualization manipulation
+[✓] Implement sliders for amplitude, frequency response, and smoothing
+[✓] Add color palette selection logic
+[✓] Enable visualization options
+[✓] Implement playback controls
+[✓] Add play/pause/stop functionality using Web Audio API
+[✓] Sync progress bar and timestamps with audio playback
+
+Data Export & Sharing
+[✓] Add visualization export functionality
+[✓] Export canvas as PNG using toDataURL.
+[✓] Generate MP4 video of visualization with audio (e.g., using MediaRecorder).
+[✓] Export audio as MP3 and analysis as JSON.
+[✓] Implement analysis data download
+[✓] Package frequency, rhythm, and harmonic data into downloadable JSON/CSV.
+[✓] Create shareable links for results
+[✓] Generate unique URLs for visualizations stored on backend.
+[✓] Integrate social sharing buttons (Twitter, Instagram) with pre-filled content.
+
+Performance Optimization
+[✓] Optimize audio processing for browser performance
+[✓] Use Web Workers for heavy audio analysis tasks (e.g., FFT).
+[✓] Implement progressive loading for visualizations
+[✓] Load visualization data in chunks for large audio files.
+[✓] Add caching mechanisms for processed audio
+[✓] Cache TTS output and analysis results using localStorage or IndexedDB.
+
+Phase 5: Final Touches
+[✓] Test with real Sanskrit audio
+[✓] Record or source authentic Sanskrit verse recitations.
+[✓] Verify visualization accuracy (waveform, frequency, rhythm).
+[✓] Add documentation
+[✓] Create user guide for input and visualization features.
+[✓] Document code for maintenance.
+[✓] Deploy application
+[✓] Set up hosting (e.g., Vercel, Netlify) with backend (e.g., Heroku).
+[✓] Test live deployment with sample data.
+
+Project Status: COMPLETED ✓
+Next Steps:
+1. Consider adding more Sanskrit audio samples
+2. Implement additional visualization types
+3. Add community features (user uploads, sharing)
+4. Optimize for mobile devices
