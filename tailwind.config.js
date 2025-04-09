@@ -2,30 +2,40 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: '#111827',
-        panel: '#1F2937',
         primary: {
-          indigo: '#4F46E5',
-          purple: '#7C3AED',
+          indigo: {
+            light: '#4F46E5',
+            dark: '#7C3AED'
+          },
+          purple: {
+            light: '#7C3AED',
+            dark: '#9333EA'
+          },
+          blue: '#3B82F6'
         },
         accent: {
           gold: '#F59E0B',
-          cyan: '#06B6D4',
-          blue: '#3B82F6',
+          cyan: '#06B6D4'
         },
-        gradient: {
-          start: '#4F46E5',
-          end: '#7C3AED',
+        background: {
+          dark: '#111827',  // gray-900
+          panel: '#1F2937', // gray-800
         }
       },
       fontFamily: {
         sanskrit: ['Noto Sans Devanagari', 'sans-serif'],
+      },
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      gridTemplateColumns: {
+        'visualization': 'repeat(auto-fit, minmax(300px, 1fr))',
       }
     },
   },
